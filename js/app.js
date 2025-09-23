@@ -35,3 +35,45 @@ $(document).ready(function () {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Attach event listener to the button
+    document.getElementById('addSubject').addEventListener('click', function() {
+        // Get values from input fields
+        var subjectCode = document.getElementById('subjectCode').value.trim();
+        var subjectName = document.getElementById('subjectName').value.trim();
+        var units = document.getElementById('units').value.trim();
+        
+        // Validate input
+        if (subjectCode === '' || subjectName === '' || units === '') {
+            alert('Please fill in all fields.');
+            return;
+        }
+        
+        // Reference to tbody where rows will be added
+        var tableBody = document.getElementById('table-content');
+        
+        // Create new row and add cells
+        var newRow = document.createElement('tr');
+
+        var codeCell = document.createElement('td');
+        codeCell.textContent = subjectCode;
+
+        var nameCell = document.createElement('td');
+        nameCell.textContent = subjectName;
+
+        var unitsCell = document.createElement('td');
+        unitsCell.textContent = units;
+
+        newRow.appendChild(codeCell);
+        newRow.appendChild(nameCell);
+        newRow.appendChild(unitsCell);
+
+        tableBody.appendChild(newRow);
+
+        // Clear input fields
+        document.getElementById('subjectCode').value = '';
+        document.getElementById('subjectName').value = '';
+        document.getElementById('units').value = '';
+    });
+});
